@@ -47,3 +47,8 @@ heroku run python manage.py migrate
 ```shell
 heroku run python manage.py createsuperuser
 ```
+
+### プロセス起動
+```shell
+heroku ps:scale web=1
+```
