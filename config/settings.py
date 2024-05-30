@@ -29,7 +29,6 @@ env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = env('SECRET_KEY')
-SECRET_KEY = 'django-insecure-a!ibuysd3n0=lu%l()^+bv1r6$2v7o%wp&079uigw@1o#sv$1p'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', default=False)
@@ -37,7 +36,7 @@ DEBUG = env('DEBUG', default=False)
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['127.0.0.1', 'https://secure-savannah-75423-084cf493964d.herokuapp.com/']
+    ALLOWED_HOSTS = ['127.0.0.1', 'secure-savannah-75423-084cf493964d.herokuapp.com']
 
 
 # Application definition
