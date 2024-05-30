@@ -37,7 +37,7 @@ DEBUG = env('DEBUG', default=False)
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['127.0.0.1', 'herokuapp.com']
+    ALLOWED_HOSTS = ['127.0.0.1', 'https://secure-savannah-75423-084cf493964d.herokuapp.com/']
 
 
 # Application definition
