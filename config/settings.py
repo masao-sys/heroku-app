@@ -49,6 +49,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # django-allauth
+    'django.contrib.sites',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
     # My applications
     'app'
 ]
@@ -66,6 +72,13 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+AUTH_USER_MODEL = 'app.CustomUser'
+
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
 ROOT_URLCONF = 'config.urls'
 
 TEMPLATES = [
@@ -79,6 +92,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                # `allauth` needs this from django
+                'django.template.context_processors.request',
             ],
         },
     },
@@ -191,3 +207,48 @@ LOGGING = {
         },
     }
 }
+
+# sitesフレームワーク用のサイトID
+SITE_ID = 1
+
+# ログイン・ログアウト時のリダイレクト先
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
+
+# 認証方式を「メルアドとパスワード」に設定
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+# ユーザ名は使用しない
+ACCOUNT_USERNAME_REQUIRED = False
+# ユーザ登録時にメルアド確認をする
+ACCOUNT_USER_MODEL_USERNAME_FIELD = None
+
+# ユーザー登録時にパスワードの要求を一回にする
+ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+
+# ユーザーがログインしていない場合に、電子メールの確認が成功した後にリダイレクトする URL
+ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/'
+
+# 認証されたユーザーの場合、電子メールの確認が成功した後にリダイレクトする URL
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/'
+
+# ログアウトをクリックしたらログアウト確認画面を経由しないで直接ログアウトする
+ACCOUNT_LOGOUT_ON_GET = True
+
+# ユーザ登録にメルアド必須にする
+ACCOUNT_EMAIL_REQUIRED = True
+
+# メール送信設定
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = env('MAILGUN_SMTP_SERVER')
+    EMAIL_PORT = env('MAILGUN_SMTP_PORT')
+    EMAIL_HOST_USER = env('MAILGUN_SMTP_LOGIN')
+    EMAIL_HOST_PASSWORD = env('MAILGUN_SMTP_PASSWORD')
+
+# 環境変数設定
+SUPERUSER_EMAIL = env('SUPERUSER_EMAIL')
+SUPERUSER_PASSWORD = env('SUPERUSER_PASSWORD')
+SUPERUSER_FIRST_NAME = env('SUPERUSER_FIRST_NAME')
+SUPERUSER_LAST_NAME = env('SUPERUSER_LAST_NAME')
