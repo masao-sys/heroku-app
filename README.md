@@ -55,5 +55,5 @@ heroku ps:scale web=1
 
 ### スーパーユーザー作成
 ```shell
-python3 manage.py superuser
+heroku run python3 manage.py superuser
 ```
