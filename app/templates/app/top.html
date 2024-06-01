@@ -10,11 +10,11 @@
             <a href="{% url 'account_logout' %}">ログアウト</a>
             {% if request.user.is_free %}
                 <p>無料会員でログインしています。</p>
-                <a href="">有料会員登録</a>
+                <a href="{% url 'credit-register' %}">有料会員登録</a>
             {% elif request.user.is_paid %}
                 <p>有料会員でログインしています。</p>
-                <a href="">クレジットカード情報を変更する</a>
-                <a href="">有料会員を解約する</a>
+                <a href="{% url 'credit-update' %}">クレジットカード情報を変更する</a>
+                <a href="{% url 'subscription-cancel' %}">有料会員を解約する</a>
             {% endif %}
         {% else %}
             <a href="{% url 'account_signup' %}">サインイン</a>
