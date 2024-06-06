@@ -49,6 +49,10 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # cloudinary
+    'cloudinary_storage',
+    'cloudinary',
+
     # django-allauth
     'django.contrib.sites',
     'allauth',
@@ -259,3 +263,12 @@ STRIPE_PUBLIC_KEY = env('STRIPE_PUBLIC_KEY')
 STRIPE_SECRET_KEY = env('STRIPE_SECRET_KEY')
 STRIPE_PRICE_ID = env('STRIPE_PRICE_ID')
 STRIPE_ACCOUNT_ID = env('STRIPE_ACCOUNT_ID')
+
+# cloudinary
+MEDIA_URL = '/media/'
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'hbit2hpa4',
+    'API_KEY': env('CLOUDINARY_API_KEY'),
+    'API_SECRET': env('CLOUDINARY_API_SECRET')
+}
