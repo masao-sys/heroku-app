@@ -238,6 +238,9 @@ ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/'
 # ログアウトをクリックしたらログアウト確認画面を経由しないで直接ログアウトする
 ACCOUNT_LOGOUT_ON_GET = True
 
+# ユーザー登録確認メールは送信しない
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+
 # ユーザ登録にメルアド必須にする
 ACCOUNT_EMAIL_REQUIRED = True
 
