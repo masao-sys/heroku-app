@@ -15,7 +15,7 @@ heroku logout
 
 ### プロジェクト作成
 ```shell
-heroku create tabelog-django
+heroku create -a example-app
 ```
 
 ### Gitリモート確認
@@ -56,4 +56,14 @@ heroku ps:scale web=1
 ### スーパーユーザー作成
 ```shell
 heroku run python3 manage.py superuser
+```
+
+### 既存アプリの場合
+```shell
+heroku git:remote -a example-app
+```
+
+### gitのリモートリポジトリのherokuの設定を削除
+```shell
+git remote rm heroku
 ```
