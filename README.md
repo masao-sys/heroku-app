@@ -15,7 +15,7 @@ heroku logout
 
 ### プロジェクト作成
 ```shell
-heroku create
+heroku create tabelog-django
 ```
 
 ### Gitリモート確認
