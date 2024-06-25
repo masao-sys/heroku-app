@@ -36,7 +36,7 @@ DEBUG = env('DEBUG', default=False)
 if DEBUG:
     ALLOWED_HOSTS = ['*']
 else:
-    ALLOWED_HOSTS = ['127.0.0.1', 'secure-savannah-75423-084cf493964d.herokuapp.com']
+    ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 
 # Application definition
@@ -249,11 +249,11 @@ if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-    EMAIL_HOST = env('MAILGUN_SMTP_SERVER')
-    EMAIL_PORT = env('MAILGUN_SMTP_PORT')
+    EMAIL_HOST = env('EMAIL_HOST')
+    EMAIL_PORT = env('EMAIL_PORT')
     EMAIL_USE_TLS = True
-    EMAIL_HOST_USER = env('MAILGUN_SMTP_LOGIN')
-    EMAIL_HOST_PASSWORD = env('MAILGUN_SMTP_PASSWORD')
+    EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 # 環境変数設定
 SUPERUSER_EMAIL = env('SUPERUSER_EMAIL')
