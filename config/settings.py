@@ -251,6 +251,7 @@ else:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_HOST = env('MAILGUN_SMTP_SERVER')
     EMAIL_PORT = env('MAILGUN_SMTP_PORT')
+    EMAIL_USE_TLS = True
     EMAIL_HOST_USER = env('MAILGUN_SMTP_LOGIN')
     EMAIL_HOST_PASSWORD = env('MAILGUN_SMTP_PASSWORD')
 
@@ -271,7 +272,7 @@ STRIPE_ACCOUNT_ID = env('STRIPE_ACCOUNT_ID')
 MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 CLOUDINARY_STORAGE = {
-    'CLOUD_NAME': 'hbit2hpa4',
+    'CLOUD_NAME': env('CLOUD_NAME'),
     'API_KEY': env('CLOUDINARY_API_KEY'),
     'API_SECRET': env('CLOUDINARY_API_SECRET')
 }
