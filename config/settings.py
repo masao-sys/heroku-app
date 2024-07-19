@@ -238,23 +238,27 @@ ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/'
 # ログアウトをクリックしたらログアウト確認画面を経由しないで直接ログアウトする
 ACCOUNT_LOGOUT_ON_GET = True
 
-# ユーザー登録確認メールは送信しない
-ACCOUNT_EMAIL_VERIFICATION = 'none'
+# ユーザー登録確認メールを送信する
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 
 # ユーザ登録にメルアド必須にする
 ACCOUNT_EMAIL_REQUIRED = True
 
 # メール送信設定
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# if DEBUG:
-#     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# else:
-#     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-#     EMAIL_HOST = env('EMAIL_HOST')
-#     EMAIL_PORT = env('EMAIL_PORT')
-#     EMAIL_USE_TLS = True
-#     EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-#     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = env('EMAIL_HOST')
+    EMAIL_PORT = env('EMAIL_PORT')
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+else:
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+    EMAIL_HOST = env('EMAIL_HOST')
+    EMAIL_PORT = env('EMAIL_PORT')
+    EMAIL_USE_TLS = True
+    EMAIL_HOST_USER = env('EMAIL_HOST_USER')
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
 
 # 環境変数設定
 SUPERUSER_EMAIL = env('SUPERUSER_EMAIL')
